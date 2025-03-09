@@ -2,18 +2,18 @@
 #include <math.h>
 
 //distancia euclideana para até 3 dimensões entre A(x,y,z) e B(x1,y1,z1)
-long double euclidean_3d(long double x,long double y,long double z, long double x1,long double y1, long double z1){
-    long double euclidean = 0;
+double euclidean_3d(double x,double y,double z, double x1,double y1, double z1){
+    double euclidean = 0;
     euclidean = sqrt(pow(x-x1,2)+pow(y-y1,2)+pow(z-z1,2));
     return euclidean;
 }
 
 //Calcula quem chega primeiro em um buraco (x,y) dados um rato(xr,yr) e um gavião(xh,yh,zh)
-char first_to_reach(long double x, long double y,long double coord[]){
+char first_to_reach(double x, double y,double coord[]){
     char output = ' ';
-    long double xr = coord[0],yr=coord[1],xh=coord[2],yh=coord[3],zh=coord[4];
+    double xr = coord[0],yr=coord[1],xh=coord[2],yh=coord[3],zh=coord[4];
 
-    long double r_dist,h_dist;
+    double r_dist,h_dist;
     r_dist = euclidean_3d(x,y,0,xr,yr,0);
     h_dist = euclidean_3d(x,y,0,xh,yh,zh);
 
@@ -25,22 +25,22 @@ char first_to_reach(long double x, long double y,long double coord[]){
 
 int main(){
     int n = 0;
-    long double coord[5];
+    double coord[5];
 
 
     scanf("%d",&n);
 
     while(n>=0){
 
-        scanf(" %Lf %Lf %Lf %Lf %Lf",&coord[0],&coord[1],&coord[2],&coord[3],&coord[4]);
-        //printf("%Lf %Lf %Lf %Lf %Lf",coord[0],coord[1],coord[2],coord[3],coord[4]);//debug
+        scanf(" %lf %lf %lf %lf %lf",&coord[0],&coord[1],&coord[2],&coord[3],&coord[4]);
+        //printf("%lf %lf %lf %lf %lf",coord[0],coord[1],coord[2],coord[3],coord[4]);//debug
         int ignore = 0;
         for(int i = 0;i<n;i++){
             //executa a comparação para cada buraco
-            long double x,y;
-            scanf(" %Lf %Lf",&x,&y);
+            double x,y;
+            scanf(" %lf %lf",&x,&y);
             if((first_to_reach(x,y,coord) == 'r') && (ignore==0)){
-                printf("O rato pode escapar pelo buraco (%.3Lf,%.3Lf).\n",x,y);
+                printf("O rato pode escapar pelo buraco (%.3lf,%.3lf).\n",x,y);
                 ignore = 1;
             }
         }
