@@ -34,20 +34,17 @@ int main(){
 
         scanf(" %f %f %f %f %f",&coord[0],&coord[1],&coord[2],&coord[3],&coord[4]);
         //printf("%f %f %f %f %f",coord[0],coord[1],coord[2],coord[3],coord[4]);//debug
-
+        int ignore = 0;
         for(int i = 0;i<n;i++){
             //executa a comparação para cada buraco
-            
             float x,y;
             scanf(" %f %f",&x,&y);
-
-            if(first_to_reach(x,y,coord) == 'r'){
+            if((first_to_reach(x,y,coord) == 'r') && (ignore==0)){
                 printf("O rato pode escapar pelo buraco (%.3f,%.3f).\n",x,y);
-                break;
-                
+                ignore = 1;
             }
-            i==(n-1)?printf("O rato nao pode escapar.\n"):0;
-            }
+        }
+        ignore==0?printf("O rato nao pode escapar.\n"):0;
             
         scanf(" %d",&n);
         
